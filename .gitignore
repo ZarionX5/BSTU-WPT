@@ -1,0 +1,12 @@
+.vscode/*
+
+node_modules/
+package.json
+package-lock.json
+
+build/
+renderer/
+dist/
+
+.env
+*.log

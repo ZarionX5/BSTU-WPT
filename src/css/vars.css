@@ -1,0 +1,68 @@
+:root {
+  --family-display: "Poppins", sans-serif;
+  --family-body: "Inter", sans-serif;
+  --family-code: "Fira Code", monospace;
+  --family-signature: "Signature", cursive;
+
+  --font-size-xs: .75rem;
+  --font-size-sm: .875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  --line-height-xs: .75rem;
+  --line-height-sm: .875rem;
+  --line-height-base: 1.25rem;
+  --line-height-lg: 1.5rem;
+  --line-height-xl: 1.625rem;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-100: hsl(0, 0%, 80%);
+    --gray-300: hsl(0, 0%, 65%);
+    --gray-400: hsl(0, 0%, 50%);
+    --gray-500: hsl(0, 0%, 35%);
+    --gray-700: hsl(0, 0%, 20%);
+    --gray-800: hsl(0, 0%, 15%);
+    --gray-900: hsl(0, 0%, 10%);
+
+    --blue-100: hsl(220, 100%, 80%);
+    --blue-300: hsl(220, 100%, 65%);
+    --blue-400: hsl(220, 100%, 50%);
+    --blue-500: hsl(220, 100%, 35%);
+    --blue-700: hsl(220, 100%, 20%);
+
+    --green-100: hsl(164, 100%, 80%);
+    --green-300: hsl(164, 100%, 65%);
+    --green-400: hsl(164, 100%, 50%);
+    --green-500: hsl(164, 100%, 35%);
+    --green-700: hsl(164, 100%, 20%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --gray-100: hsl(0, 0%, 10%);
+    --gray-300: hsl(0, 0%, 15%);
+    --gray-400: hsl(0, 0%, 20%);
+    --gray-500: hsl(0, 0%, 35%);
+    --gray-700: hsl(0, 0%, 50%);
+    --gray-800: hsl(0, 0%, 65%);
+    --gray-900: hsl(0, 0%, 80%);
+
+    --blue-100: hsl(220, 100%, 20%);
+    --blue-300: hsl(220, 100%, 35%);
+    --blue-400: hsl(220, 100%, 50%);
+    --blue-500: hsl(220, 100%, 65%);
+    --blue-700: hsl(220, 100%, 80%);
+
+    --green-100: hsl(164, 100%, 20%);
+    --green-300: hsl(164, 100%, 35%);
+    --green-400: hsl(164, 100%, 50%);
+    --green-500: hsl(164, 100%, 65%);
+    --green-700: hsl(164, 100%, 80%);
+  }
+}

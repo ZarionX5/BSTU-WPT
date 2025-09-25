@@ -1,0 +1,64 @@
+
+.base-cnt {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+a,
+input,
+button {
+  font-size: var(--font-size-base);
+  height: calc(2*var(--line-height-base));
+  width: 100%;
+}
+
+a,
+input,
+button {
+  color: var(--gray-100);
+  border-radius: 0.25rem;
+  padding: 0.6rem;
+}
+
+input:focus {
+  outline-width: 1px;
+  outline: solid;
+  outline-color: var(--blue-400);
+}
+
+input {
+  background-color: var(--gray-500);
+}
+
+::placeholder {
+  color: var(--gray-700);
+}
+
+
+button {
+  background-color: var(--blue-400);
+}
+
+button:active  {
+  background-color: var(--blue-500);
+  outline: none;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--blue-400);
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

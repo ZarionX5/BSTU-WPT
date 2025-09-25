@@ -17,43 +17,39 @@
 <body>
   <div class="base-cnt">
     <main class="main">
-      <div class="register">
-        <div class="register-title">
-          <div class="register-logo">
+      <div class="login">
+        <div class="login-title">
+          <div class="login-logo">
             <img alt="logo" src="./assets/logo.svg">
           </div>
           <div>
             <h2>
-              Регистрация в Tracker
+              Войти в Tracker
             </h2>
           </div>
         </div>
-        <form class="register-form">
-          <div class="register-name">
-            <div class="register-name-title">
-              Login:
-            </div>
-            <input type="username" placeholder="Введите имя пользователя" name="login" autocomplete="username" autocorrect="off"
-              autofocus="autofocus" required="required">
-          </div>
-          <div class="register-email">
-            <div class="register-email-title">
+        <form class="login-form">
+          <div class="login-email">
+            <div class="login-email-title">
               Email:
             </div>
-            <input type="email" placeholder="Введите email" name="email" autocomplete="username" autocorrect="off"
+            <input type="email" placeholder="Введите email" name="email" autocomplete="email" autocorrect="off"
               autofocus="autofocus" required="required">
           </div>
-          <div class="register-password">
-            <div class="register-password-title">
+          <div class="login-password">
+            <div class="login-password-title">
               Password:
             </div>
             <input type="password" placeholder="Введите пароль" name="password" autocomplete="current-password"
               autocorrect="off" autofocus="autofocus" required="required">
           </div>
-          <div class="register-interaction">
-            <button class="register-btn" type="submit" name="commit" autofocus="autofocus">
-              Регистрация
+          <div class="login-interaction">
+            <button class="login-btn" type="submit" name="commit" autofocus="autofocus">
+              Войти
             </button>
+            <a class="forget-password-btn" href="./null.html">
+              Забыл пароль?
+            </a>
           </div>
         </form>
       </div>

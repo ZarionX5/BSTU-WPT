@@ -16,36 +16,42 @@
 
 <body>
   <div class="base-cnt">
-    <header class="header">
-      <div class="header-logo">
-        <img alt="logo" src="./assets/logo.svg">
-        <span>Tracker</span>
+    <header class="header-content">
+        <div class="header-content-logo">
+          <img alt="logo" src="./assets/logo.svg">
+          <span>Tracker</span>
+        </div>
+        <nav>
+          <div class="nav-btn-cnt">
+            <a class="btn-dashboard">
+              <div>
+                <img src="./assets/other/dashboard.svg" alt="dashboard-icon">
+              </div>
+              <span class="nav-btn-name">Дашборд</span>
+            </a>
+          </div>
+          <div class="nav-btn-cnt">
+            <a class="btn-monitoring nav-btn-selected">
+              <div>
+                <img src="./assets/other/monitoring.svg" alt="monitoring-icon">
+              </div>
+              <span class="nav-btn-name">Мониторинг</span>
+            </a>
+          </div>
+        </nav>
+
+      <div class="user-cnt">
+        <a href="./null.html">
+          Nikita Loek
+        </a>
       </div>
-      <nav>
-        <div class="nav-btn-cnt">
-          <a class="btn-dashboard">
-            <div>
-              <img src="./assets/other/dashboard.svg" alt="dashboard-icon">
-            </div>
-            <span class="nav-btn-name">Дашборд</span>
-          </a>
-        </div>
-        <div class="nav-btn-cnt">
-          <a class="btn-monitoring nav-btn-selected">
-            <div>
-              <img src="./assets/other/monitoring.svg" alt="monitoring-icon">
-            </div>
-            <span class="nav-btn-name">Мониторинг</span>
-          </a>
-        </div>
-      </nav>
     </header>
     <main class="main">
       <div class="content-cnt">
         <div class="control-panel">
           <!-- <input class="search" type="text"> -->
 
-          <div class="control-panel-list">
+          <div class="control-panel-title">
             <input type="checkbox" name="select-all">
 
             <button class="center">
@@ -66,7 +72,18 @@
           </div>
         </div>
         <div class="view-panel">
-          fgedfgd
+          <div class="world-map">
+            <div class="sizing">
+              <div class="btn-cnt">
+                <button>
+                  <img src="./assets/other/add.svg" alt="add">
+                </button>
+                <button>
+                  <img src="./assets/other/remove.svg" alt="add">
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

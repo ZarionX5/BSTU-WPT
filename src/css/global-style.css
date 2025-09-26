@@ -31,6 +31,12 @@ input {
   background-color: var(--gray-500);
 }
 
+input:active,
+input:focus {
+  background-color: var(--blue-500);
+  outline: none;
+}
+
 ::placeholder {
   color: var(--gray-700);
 }

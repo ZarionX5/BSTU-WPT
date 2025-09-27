@@ -1,15 +1,21 @@
-.header-content {
-  display: grid;
-  grid-template: min(5vh) / 1fr 8fr 1fr;
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
   width: 100%;
   background-color: var(--gray-800);
 }
 
-.header-content * {
+.header * {
   color: var(--gray-300);
 }
 
-.header-content-logo {
+.header .user-btn {
+  color: var(--gray-100);
+  background-color: var(--blue-400);
+}
+
+.header-logo {
   padding: 10px 25px;
   display: flex;
   align-items: center;
@@ -17,12 +23,12 @@
   font-size: var(--font-size-xl);
 }
 
-.header-content-logo img {
+.header-logo img {
   margin-right: 5px;
   height: 100%;
 }
 
-.header-content nav {
+.header nav {
   display: flex;
 }
 
@@ -33,30 +39,30 @@
   height: 100%;
 }
 
-.header-content span {
+.header span {
   margin-left: 4px;
 }
 
-.header-content a {
+.header a {
   padding: 5px;
 }
 
-.header-content a,
-.header-content a * {
+.header a,
+.header a * {
   background-color: transparent;
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.header-content a:active,
-.header-content a:focus {
+.header a:active,
+.header a:focus {
   color: var(--gray-100);
   background-color: var(--gray-700);
   text-decoration: none;
 }
 
-.header-content a:hover {
+.header a:hover {
   color: var(--gray-100);
   text-decoration: underline;
 }

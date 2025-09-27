@@ -1,3 +1,7 @@
+.main {
+  height: 100%;
+}
+
 .content-cnt {
   display: grid;
   grid-template: 100% / 500px auto;
@@ -19,17 +23,33 @@
   padding: 5px;
   background-color: var(--gray-800);
   display: grid;
-  grid-template: 25px / 1fr 1fr 3fr 2fr 1fr 1fr;
+  grid-template: 25px / 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr;
 }
 
 .control-panel-title * {
   height: 25px;
-
 }
 
 .control-panel-title *:active *:focus {
   outline-width: 0px;
   outline: none;
+}
+
+.control-panel-list {
+  padding: 5px;
+  background-color: var(--gray-500);
+  display: grid;
+  grid-template: 25px / 1fr 1fr 3fr 2fr 1fr 1fr;
+}
+
+.control-panel-list input {
+  height: 25px;
+}
+
+.control-panel-list span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -85,4 +105,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.state {
+  font-weight: 900;
+}
+
+.good {
+  color: greenyellow;
+}
+
+.bad {
+  color: tomato;
+}
+
+.user-cnt {
+  display: flex;
+  justify-content: center;
+}
+
+.user-cnt a {
+  width: auto;
+  height: 100%;
 }

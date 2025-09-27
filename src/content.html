@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/svg+xml" href="http://localhost:5500/assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 
   <title>Tracker</title>
   <meta name="description" content="Платформа для мониторинга.">
@@ -17,32 +17,37 @@
 <body>
   <div class="base-cnt">
     <header class="header-content">
-        <div class="header-content-logo">
-          <img alt="logo" src="./assets/logo.svg">
-          <span>Tracker</span>
+      <div class="header-content-logo">
+        <img alt="logo" src="./assets/logo.svg">
+        <span>Tracker</span>
+      </div>
+      <nav>
+        <div class="nav-btn-cnt">
+          <a class="btn-dashboard" href="./null.html">
+            <div>
+              <img src="./assets/other/dashboard.svg" alt="dashboard-icon">
+            </div>
+            <span class="nav-btn-name">Дашборд</span>
+          </a>
         </div>
-        <nav>
-          <div class="nav-btn-cnt">
-            <a class="btn-dashboard">
-              <div>
-                <img src="./assets/other/dashboard.svg" alt="dashboard-icon">
-              </div>
-              <span class="nav-btn-name">Дашборд</span>
-            </a>
-          </div>
-          <div class="nav-btn-cnt">
-            <a class="btn-monitoring nav-btn-selected">
-              <div>
-                <img src="./assets/other/monitoring.svg" alt="monitoring-icon">
-              </div>
-              <span class="nav-btn-name">Мониторинг</span>
-            </a>
-          </div>
-        </nav>
+        <div class="nav-btn-cnt nav-btn-selected">
+          <a class="btn-monitoring" href="./null.html">
+            <div>
+              <img src="./assets/other/monitoring.svg" alt="monitoring-icon">
+            </div>
+            <span class="nav-btn-name">Мониторинг</span>
+          </a>
+        </div>
+      </nav>
 
       <div class="user-cnt">
         <a href="./null.html">
-          Nikita Loek
+          <div>
+            <img src="./assets/other/account.svg" alt="account-icon">
+          </div>
+          <span>
+            Nikita Loek
+          </span>
         </a>
       </div>
     </header>
@@ -53,18 +58,73 @@
 
           <div class="control-panel-title">
             <input type="checkbox" name="select-all">
-
             <button class="center">
               <img src="./assets/other/add.svg" alt="add">
             </button>
             <button class="center">
               <img src="./assets/other/refresh.svg" alt="refresh">
             </button>
+            <button class="center">
+              <img src="./assets/other/vdots.svg" alt="vdots">
+            </button>
+            <button class="center">
+              <img src="./assets/other/settings.svg" alt="settings">
+            </button>
             <div class="center">
               <img src="./assets/other/location.svg" alt="location">
             </div>
             <div class="center">
               <img src="./assets/other/signal.svg" alt="signal">
+            </div>
+            <div class="center">
+            </div>
+          </div>
+
+          <div class="control-panel-list">
+            <input type="checkbox" name="select-all">
+            <div class="center">
+              <img src="./assets/other/person.svg" alt="person">
+            </div>
+            <span>Человек 1</span>
+            <div class="center">
+              <span class="state good">on</span>
+            </div>
+            <div class="center">
+              70%
+            </div>
+            <div class="center">
+              <img src="./assets/other/delete.svg" alt="delete">
+            </div>
+          </div>
+
+          <div class="control-panel-list">
+            <input type="checkbox" name="select-all">
+            <div class="center">
+              <img src="./assets/other/person.svg" alt="person">
+            </div>
+            <span>Человек 2</span>
+            <div class="center">
+              <span class="state bad">off</span>
+            </div>
+            <div class="center">
+              0%
+            </div>
+            <div class="center">
+              <img src="./assets/other/delete.svg" alt="delete">
+            </div>
+          </div>
+
+          <div class="control-panel-list">
+            <input type="checkbox" name="select-all">
+            <div class="center">
+              <img src="./assets/other/pedal-bike.svg" alt="person">
+            </div>
+            <span>Велосипед</span>
+            <div class="center">
+              <span class="state good">on</span>
+            </div>
+            <div class="center">
+              95%
             </div>
             <div class="center">
               <img src="./assets/other/delete.svg" alt="delete">
@@ -79,7 +139,7 @@
                   <img src="./assets/other/add.svg" alt="add">
                 </button>
                 <button>
-                  <img src="./assets/other/remove.svg" alt="add">
+                  <img src="./assets/other/remove.svg" alt="remove">
                 </button>
               </div>
             </div>
@@ -96,8 +156,8 @@
               Россия
             </button>
           </li>
-          <li><a href="http://localhost:5500/null.html">English (US)</a></li>
-          <li><a href="http://localhost:5500/null.html">Русский</a></li>
+          <li><a href="./null.html">English (US)</a></li>
+          <li><a href="./null.html">Русский</a></li>
         </ul>
       </div>
       <div class="footer-other">

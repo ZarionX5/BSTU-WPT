@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 5vh;
   width: 100%;
   background-color: var(--gray-800);
 }
@@ -24,6 +23,8 @@
 }
 
 .header-logo img {
+  max-width: 2.5em;
+  aspect-ratio: 1;
   margin-right: 5px;
   height: 100%;
 }
@@ -72,17 +73,12 @@
   background-color: var(--gray-700);
 }
 
+.user-cnt {
+  display: flex;
+}
 
-@media (width >= 768px) {
-  .footer {
-    flex-direction: row-reverse;
-    width: 100%;
-  }
-  .footer-langs {
-    margin-bottom: auto;
-    margin-left: auto;
-  }
-  .footer-other {
-    margin: 0;
+@media (width < 768px) {
+  .header {
+    flex-direction: column;
   }
 }

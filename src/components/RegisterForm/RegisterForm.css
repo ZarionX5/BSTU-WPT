@@ -1,13 +1,15 @@
-.login {
+.register {
+  margin: 0px auto;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   width: min(50%, 400px);
 }
 
-.login-title {
+.register-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,14 +20,14 @@
   margin-bottom: 15px;
 }
 
-.login-logo img {
+.register-logo img {
   height: 100px;
   aspect-ratio: 1;
   margin: 20px;
   
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,35 +38,40 @@
   
 }
 
-.login-email-title {
+.register-form input {
+  width: 100%;
+}
+
+.register-name-title {
   font-weight: 600;
   margin: 5px;
 }
 
-.login-email {
+.register-name {
   width: 100%;
 }
 
-
-.login-password-title {
+.register-email-title {
   font-weight: 600;
   margin: 5px;
 }
 
-.login-password {
+.register-email {
   width: 100%;
-  margin-top: 15px;
+  margin: 15px;
+}
+
+.register-password-title {
+  font-weight: 600;
+  margin: 5px;
+}
+
+.register-password {
+  width: 100%;
   margin-bottom: 35px;
 }
 
-.forget-password-btn {
-  margin-left: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-interaction {
+.register-interaction {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -80,7 +87,7 @@
 
 
 @media (width < 544px) {
-  .login {
+  .register {
     width: 100%;
   }
 }

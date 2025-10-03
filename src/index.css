@@ -1,0 +1,191 @@
+:root {
+  --family-display: "Poppins", sans-serif;
+  --family-body: "Inter", sans-serif;
+  --family-code: "Fira Code", monospace;
+  --family-signature: "Signature", cursive;
+
+  --font-size-xs: .75rem;
+  --font-size-sm: .875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  --line-height-xs: .75rem;
+  --line-height-sm: .875rem;
+  --line-height-base: 1.25rem;
+  --line-height-lg: 1.5rem;
+  --line-height-xl: 1.625rem;
+
+  --space-0: 0;
+  --space-05: .125rem;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-9: 2.25rem;
+  --space-10: 2.5rem;
+  --space-11: 2.75rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+  --space-36: 9rem;
+  --space-40: 10rem;
+  --space-44: 11rem;
+  --space-48: 12rem;
+  --space-52: 13rem;
+  --space-56: 14rem;
+  --space-60: 15rem;
+  --space-64: 16rem;
+  --space-72: 18rem;
+  --space-80: 20rem;
+  --space-96: 24rem;
+
+  color-scheme: light dark;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-100: hsl(0, 0%, 80%);
+    --gray-300: hsl(0, 0%, 65%);
+    --gray-400: hsl(0, 0%, 50%);
+    --gray-500: hsl(0, 0%, 35%);
+    --gray-700: hsl(0, 0%, 20%);
+    --gray-800: hsl(0, 0%, 15%);
+    --gray-900: hsl(0, 0%, 10%);
+
+    --blue-100: hsl(220, 100%, 80%);
+    --blue-300: hsl(220, 100%, 65%);
+    --blue-400: hsl(220, 100%, 50%);
+    --blue-500: hsl(220, 100%, 35%);
+    --blue-700: hsl(220, 100%, 20%);
+
+    --green-100: hsl(164, 100%, 80%);
+    --green-300: hsl(164, 100%, 65%);
+    --green-400: hsl(164, 100%, 50%);
+    --green-500: hsl(164, 100%, 35%);
+    --green-700: hsl(164, 100%, 20%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --gray-100: hsl(0, 0%, 10%);
+    --gray-300: hsl(0, 0%, 15%);
+    --gray-400: hsl(0, 0%, 20%);
+    --gray-500: hsl(0, 0%, 35%);
+    --gray-700: hsl(0, 0%, 50%);
+    --gray-800: hsl(0, 0%, 65%);
+    --gray-900: hsl(0, 0%, 80%);
+
+    --blue-100: hsl(220, 100%, 20%);
+    --blue-300: hsl(220, 100%, 35%);
+    --blue-400: hsl(220, 100%, 50%);
+    --blue-500: hsl(220, 100%, 65%);
+    --blue-700: hsl(220, 100%, 80%);
+
+    --green-100: hsl(164, 100%, 20%);
+    --green-300: hsl(164, 100%, 35%);
+    --green-400: hsl(164, 100%, 50%);
+    --green-500: hsl(164, 100%, 65%);
+    --green-700: hsl(164, 100%, 80%);
+  }
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  
+  color: var(--gray-300);
+  background-color: var(--gray-700);
+
+  font-family: var(--family-body);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+a,
+input,
+button {
+  color: var(--gray-100);
+
+  font-size: var(--font-size-base);
+  line-height: calc(2*var(--line-height-base));
+
+  border: 1px solid transparent;
+  border-radius: 0px;
+
+  padding: 0 0.6rem;
+}
+
+input:focus {
+  outline-width: 1px;
+  outline: solid;
+  outline-color: var(--blue-400);
+}
+
+input {
+  background-color: var(--gray-500);
+}
+
+input:active,
+input:focus {
+  background-color: var(--blue-500);
+  outline: none;
+}
+
+::placeholder {
+  color: var(--gray-700);
+}
+
+
+button {
+  background-color: var(--blue-400);
+}
+
+button:active  {
+  background-color: var(--blue-500);
+  outline: none;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--blue-400);
+  text-decoration: underline;
+}

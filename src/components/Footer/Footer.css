@@ -1,10 +1,11 @@
 
 .footer {
+  margin: auto 0px 0px;
+
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 15px 25px;
-  margin-top: auto;
 
   background-color: var(--gray-800);
 }

@@ -1,2 +1,1 @@
-# BSTU-WPT
-BSTU web programing technology.
+# React + TypeScript + Vite

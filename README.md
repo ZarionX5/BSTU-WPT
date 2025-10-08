@@ -1,1 +1,1 @@
-# React + TypeScript + Vite
+# Python + FastAPI

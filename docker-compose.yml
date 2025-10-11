@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - path: ./.env.example
+    container_name: backend-lab-3
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    tty: true
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

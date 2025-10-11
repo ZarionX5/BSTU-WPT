@@ -1,24 +1,18 @@
 from typing import Optional
 
-from src.models.converter import CalcSystemsModel
+from src.models.converter import CharModel, CalcSystems, CalcSystemsModel, AsciiTextToCodeModel, AsciiToCodeModel, CodeToAsciiModel
 
 
-def to_other_calc_system(num: int, from_: CalcSystemsModel ='dec', to_: CalcSystemsModel='dec') -> int:
-    def cs_str_to_int(calc_system) -> int:
-        if calc_system == 'bin':
-            return 2
-        elif calc_system == 'oct':
-            return 8
-        elif calc_system == 'dec':
-            return 10
-        elif calc_system == 'hex':
-            return 16
-
-    f = cs_str_to_int(from_.calc_system)
-    t = cs_str_to_int(to_.calc_system)
-
-    return int(int(num, f), t)
-
+def to_other_calc_system(num: int, from_: CalcSystemsModel, to_: CalcSystemsModel) -> int:
+    num = int(f'{num}', from_.calc_system.value)
+    if to_.calc_system == CalcSystems.bin:
+        return bin(num)[2:]
+    elif to_.calc_system == CalcSystems.oct:
+        return oct(num)[2:]
+    elif to_.calc_system == CalcSystems.hex:
+        return hex(num)[2:]
+    else:
+        return num
 
 class AsciiConverter():
     all_ascii_chars = {chr(i): i for i in range(128)}
@@ -33,26 +27,67 @@ class AsciiConverter():
         return AsciiConverter.all_ascii_chars_reverse.copy()
 
     @staticmethod
-    def ascii_to_code(char: str, calc_system: CalcSystemsModel = 'dec') -> int:
+    def ascii_to_code(args: AsciiToCodeModel) -> int:
         return to_other_calc_system(
-            AsciiConverter.all_ascii_chars_reverse[char.char],
-            'dec',
-            calc_system)
+            AsciiConverter.all_ascii_chars[args.char],
+            CalcSystemsModel(),
+            CalcSystemsModel(calc_system=args.calc_system))
 
     @staticmethod
-    def code_to_ascii(char_code: int, calc_system: CalcSystemsModel = 'dec') -> str:
-        return AsciiConverter.all_ascii_chars[
-            to_other_calc_system(char_code,
-                                 'dec',
-                                 calc_system)]
+    def code_to_ascii(args: CodeToAsciiModel) -> str:
+        return AsciiConverter.all_ascii_chars_reverse[
+            to_other_calc_system(args.code,
+                                 CalcSystemsModel(),
+                                 CalcSystemsModel())]
 
     @staticmethod
-    def ascii_text_to_code(text: str, sep:str=' ', prefix:Optional[str] = None) -> tuple[int]:
+    def ascii_text_to_code(args: AsciiTextToCodeModel) -> str:
         seq = []
-        for char in text:
-            if ord(char) < 128:
-                seq.append(f'{prefix}{AsciiConverter.all_ascii_chars[char]}')
-            else:
-                raise ValueError("String have not ascii chars")
+        prefix = args.prefix
+        if prefix is None:
+            def set_prefix(cs: CalcSystemsModel) -> str:
+                if cs.calc_system.name == 'bin':
+                    return '0b'
+                elif cs.calc_system.name == 'oct':
+                    return '0o'
+                elif cs.calc_system.name == 'dec':
+                    return ''
+                elif cs.calc_system.name == 'hex':
+                    return '0x'
+            prefix = set_prefix(CalcSystemsModel(calc_system=args.calc_system))
+        for char in args.text:
+            char = CharModel(char=char).char
+            ch = to_other_calc_system(
+                AsciiConverter.all_ascii_chars[char],
+                CalcSystemsModel(),
+                CalcSystemsModel(calc_system=args.calc_system)
+            )
+            seq.append(f'{prefix}{ch}')
 
-        return sep.join(seq)
+        return args.sep.join(seq)
+
+    @staticmethod
+    def code_to_ascii_text(args: AsciiTextToCodeModel) -> str:
+        seq = []
+        prefix = args.prefix
+        if prefix is None:
+            def set_prefix(cs: CalcSystemsModel) -> str:
+                if cs.calc_system.name == 'bin':
+                    return '0b'
+                elif cs.calc_system.name == 'oct':
+                    return '0o'
+                elif cs.calc_system.name == 'dec':
+                    return ''
+                elif cs.calc_system.name == 'hex':
+                    return '0x'
+            prefix = set_prefix(CalcSystemsModel(calc_system=args.calc_system))
+        for char in args.text:
+            char = CharModel(char=char).char
+            ch = to_other_calc_system(
+                AsciiConverter.all_ascii_chars[char],
+                CalcSystemsModel(),
+                CalcSystemsModel(calc_system=args.calc_system)
+            )
+            seq.append(f'{prefix}{ch}')
+
+        return args.sep.join(seq)

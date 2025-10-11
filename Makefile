@@ -22,6 +22,15 @@ lint:
 req_install:
 	uv sync
 
+d_c_run:
+	sudo docker compose run --build --rm web
+
+d_c_up:
+	sudo docker compose up
+
+d_c_down:
+	sudo docker compose down
+
 tests:
 
 clean:

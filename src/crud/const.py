@@ -9,10 +9,8 @@ def num_to_readable(num: Union[int, float], sep: str = ".") -> str:
     else:
         return num
 
-
 def get_capacity_by_bits(bits: int) -> int:
     return 2**bits
-
 
 def get_int_range_by_bits(
     bits: int, is_signed: bool = True, shift: int = 0
@@ -30,6 +28,6 @@ def get_int_range_by_bits(
     return (start, end)
 
 
-def get_int_limits() -> IntLimitsModel:
+def get_int_limits() -> dict:
     lim = IntLimitsModel()
     return lim.model_dump()

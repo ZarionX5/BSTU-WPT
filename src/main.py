@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from src.api.main import api_router
 from src.core.config import settings
+import src.core.logger
 
 
 app = FastAPI(

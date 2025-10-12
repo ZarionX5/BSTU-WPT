@@ -8,6 +8,7 @@ run_prod:
 	${ENV_EXEC} fastapi run src/main.py
 
 run_dev:
+# 	${ENV_EXEC} fastapi dev src/main.py
 	${ENV_EXEC} uvicorn src.main:app --reload --host localhost --port 8000
 
 format:

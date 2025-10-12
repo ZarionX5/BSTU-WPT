@@ -38,5 +38,4 @@ COPY ./src /app/src
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync
 
-# CMD ["fastapi", "run", "--port", "${APP_PORT}", "src/main.py"]
-CMD fastapi run src/main.py
+CMD ["fastapi", "run", "src/main.py"]

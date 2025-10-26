@@ -36,4 +36,6 @@ tests:
 
 clean:
 	rm -rf __pycache__ ./*/__pycache__ ./*/*/./*/__pycache__
+	rm -rf ./.ruff_cache
 	rm -rf ./.venv
+	rm -rf *.log

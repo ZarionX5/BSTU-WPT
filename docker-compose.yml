@@ -5,11 +5,36 @@ services:
       dockerfile: Dockerfile
     env_file:
       - path: ./.env.example
-    container_name: backend-lab-3
+    container_name: backend
     restart: unless-stopped
     ports:
       - "8000:8000"
     tty: true
+    depends_on:
+      - database
+    networks:
+      - backend
+
+
+  database:
+    image: postgres:14
+    container_name: postgresql
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db/postgres/postgres_data:/var/lib/postgresql/data"
+    env_file:
+      - './.env.example'
+    networks:
+      - backend
+
+  db-viewer:
+    image: dpage/pgadmin4:6.19
+    container_name: pgadmin4
+    ports:
+      - '5433:80'
+    env_file:
+      - './.env.example'
     networks:
       - backend
 

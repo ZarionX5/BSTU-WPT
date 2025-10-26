@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from src.api.main import api_router
 from src.core.config import settings
-import src.core.logger
+from src.core.database import init_db
 
 
 app = FastAPI(
@@ -12,4 +12,4 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
 if __name__ == "__main__":
-    pass
+    init_db()

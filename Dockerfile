@@ -32,6 +32,8 @@ ENV PYTHONPATH=/src
 COPY ./pyproject.toml ./uv.lock ./
 
 COPY ./src /app/src
+COPY ./src/alembic /app/src/alembic
+COPY ./alembic.ini /app/alembic.ini
 
 # Sync the project
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers

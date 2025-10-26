@@ -1,26 +1,57 @@
-from typing import Annotated
-from uuid import UUID, uuid4 as uuid_factory
+from typing import Optional
+from uuid import uuid4 as uuid_factory
 
-from pydantic import BaseModel, Field
-from pydantic import EmailStr
-from annotated_types import Le
+from sqlmodel import SQLModel as BaseModel, Field, Relationship
+
+from src.core.types import (
+    UUID,
+    Latitude,
+    Longitude,
+    NameStr,
+    DescriptionStr,
+    EmailStr,
+    PasswordStr,
+    HashedStr,
+    Percentage,
+)
+
 
 class Id(BaseModel):
     id: UUID
 
+
 class IdAuto(BaseModel):
     id: UUID = Field(default_factory=uuid_factory)
 
+
+class IdPK(BaseModel):
+    id: UUID = Field(default_factory=uuid_factory, primary_key=True)
+
+
 class Name(BaseModel):
-    name: str = Field(min_length=1, max_length=255)
+    name: NameStr
+
 
 class Description(BaseModel):
-    description: str = Field(default="", max_length=255)
+    description: DescriptionStr
+
 
 class Email(BaseModel):
-    email: EmailStr = Field(max_length=255)
+    email: EmailStr
 
-Percentage = Annotated[float, Field(ge=0, le=100)]
+
+class Password(BaseModel):
+    password: PasswordStr
+
+
+class HashedPassword(BaseModel):
+    hashed_password: HashedStr
+
+
 class Signal(BaseModel):
     signal: Percentage
 
+
+class Position(BaseModel):
+    position_lat: Optional[Latitude]
+    position_lon: Optional[Longitude]

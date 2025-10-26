@@ -1,5 +1,6 @@
 .dockerignore
 .*
+!.env.example
 __pycache__
 Makefile
 

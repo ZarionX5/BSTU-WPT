@@ -1,83 +1,106 @@
 from typing import Any
 import logging
+import random
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, status
+
+from src.models import UUID, User
+from src.models import (
+    TrackingObject,
+    TrackingObjectPublic,
+    TrackingObjectsPublic,
+    TrackingObjectCreate,
+    TrackingObjectUpdate,
+)
+from src.api.deps import SessionDep, CurrentUser
+from src.crud.monitoring import (
+    create_tracking_object,
+    read_tracking_object_by_id,
+    update_tracking_object,
+    delate_tracking_object,
+    read_tracking_objects,
+)
+
 
 logger = logging.getLogger(__name__)
-from src.models.base import uuid_factory, UUID, Id
-from src.models.monitoring import (TrackingObjectPublic,
-                                   TrackingObjectsPublic,
-                                   IconsObject, Coordinate,
-                                   TrackingObjectCreate,
-                                   TrackingObjectUpdate)
-
-
 router = APIRouter(prefix="/monitoring", tags=["monitoring"])
 
+
 @router.post("/object", response_model=TrackingObjectPublic)
-def create_object(object_in: TrackingObjectCreate) -> Any:
-    import random # FIX
+def create_object(session: SessionDep, current_user: CurrentUser, object_in: TrackingObjectCreate) -> Any:
+
+
     return TrackingObjectPublic(
-        name=object_in.name,
-        icon_object=object_in.icon_object,
-        signal=random.random() * 100,
-        position=Coordinate(latitude=42.1,
-                            longitude=42.1),
-        id=uuid_factory()
-    )
+        **create_tracking_object(session=session, object_in=object_in, current_user=current_user).model_dump()
+        )
+
 
 @router.get("/object/{id}", response_model=TrackingObjectPublic)
-def read_object(id: UUID) -> Any:
-    import random # FIX
-    names = ('bike', 'car', 'bus', 'airplane')
-    ico = (IconsObject.bike, IconsObject.car, IconsObject.bus, IconsObject.airplane)
-    i = random.randint(0, len(names)-1)
+def read_object(session: SessionDep, current_user: CurrentUser, id: UUID) -> Any:
+    res = read_tracking_object_by_id(session=session, tracking_object_id=id)
+
+    if res is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Object not found"
+        )
+
+    if res.owner_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not permission"
+        )
+
     return TrackingObjectPublic(
-        name=names[i],
-        icon_object=ico[i],
-        signal=random.random() * 100,
-        position=Coordinate(latitude=42.1,
-                            longitude=42.1),
-        id=id
-    )
+        **res.model_dump()
+        )
+
 
 @router.put("/object/{id}", response_model=TrackingObjectPublic)
-def update_object(id: UUID, object_in: TrackingObjectUpdate) -> Any:
-    import random # FIX
-    names = ('bike', 'car', 'bus', 'airplane')
-    ico = (IconsObject.bike, IconsObject.car, IconsObject.bus, IconsObject.airplane)
-    i = random.randint(0, len(names)-1)
-    obj = TrackingObjectPublic(
-        name=names[i],
-        icon_object=ico[i],
-        signal=random.random() * 100,
-        position=Coordinate(latitude=42.1,
-                            longitude=42.1),
-        id=id
-    )
-    res = {**obj.model_dump(), **object_in.model_dump()}
-    return TrackingObjectPublic(**res)
+def update_object(
+    session: SessionDep, current_user: CurrentUser, id: UUID, object_in: TrackingObjectUpdate
+) -> Any:
+    res = read_tracking_object_by_id(session=session, tracking_object_id=id)
 
-@router.delete("/object/{id}", response_model=Id)
-def delete_object(id: UUID) -> Any:
-    return Id(id=id)
+    if res is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Object not found"
+        )
+    if res.owner_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not permission"
+        )
+
+    res = update_tracking_object(
+        session=session, tracking_object=res, tracking_object_update=object_in
+    )
+
+    return TrackingObjectPublic(
+        **res.model_dump()
+        )
+
+
+@router.delete("/object/{id}", response_model=TrackingObjectPublic)
+def delete_object(session: SessionDep, current_user: CurrentUser, id: UUID) -> Any:
+    res = read_tracking_object_by_id(session=session, tracking_object_id=id)
+
+    if res is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Object not found"
+        )
+    if res.owner_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not permission"
+        )
+    res = delate_tracking_object(session=session, tracking_object=res)
+
+    return TrackingObjectPublic(
+        **res.model_dump()
+        )
+
 
 @router.get("/objects", response_model=TrackingObjectsPublic)
-def read_objects() -> Any:
-    import random # FIX
-    names = ('bike', 'car', 'bus', 'airplane')
-    ico = (IconsObject.bike, IconsObject.car, IconsObject.bus, IconsObject.airplane)
-    cnt = 3
-    return TrackingObjectsPublic(
-        data=[
-            TrackingObjectPublic(
-                name=f'{names[i]} #{n+1}',
-                icon_object=ico[i],
-                signal=random.random() * 100,
-                position=Coordinate(latitude=42.1+n,
-                                    longitude=42.1+n),
-                id=uuid_factory()
-            ) for n, i in enumerate([random.randint(0, len(names)-1) for _ in range(cnt)])
-        ],
-        count=cnt
+def read_objects(session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100) -> Any:
+    res = read_tracking_objects(
+        session=session, user=current_user, skip=skip, limit=limit
     )
+
+    return res

@@ -1,13 +1,30 @@
 from typing import Any
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, status
 
-from src.api.deps import CurrentUser
-from src.models.users import UserPublic
-
+from src.api.deps import CurrentUser, SessionDep
+from src.models.users import UserPublic, UserCreate
+from src.crud import users
 
 router = APIRouter(prefix="/users", tags=["users"])
 
+
 @router.get("/me", response_model=UserPublic)
 def read_user_me(current_user: CurrentUser) -> Any:
-    return current_user
+    return UserPublic(**current_user.model_dump())
+
+
+@router.post(
+    "/", response_model=UserPublic
+)
+def create_user(*, session: SessionDep, user_in: UserCreate) -> Any:
+    user = users.get_user_by_email(session=session, email=user_in.email)
+    if user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="The user with this email already exists in the system.",
+        )
+
+    user = users.create_user(session=session, user_create=user_in)
+
+    return user

@@ -27,6 +27,6 @@ dist-ssr
 .venv
 __pycache__
 .env
-!example.env
+!.env.example
 .python-version
 .ruff_cache

@@ -1,0 +1,47 @@
+.ol-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ol-control {
+  line-height: normal;
+  position: absolute;
+  display: block;
+}
+
+.ol-zoom {
+  top: .5em;
+  right: .5em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 4.5em;
+}
+
+
+.ol-zoom button {
+  line-height: normal;
+  height: 2em;
+  width: 2em;
+}
+
+.ol-attribution {
+  background-color: var(--gray-500);
+  padding: .1em .5em;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: auto;
+}
+
+.ol-attribution * {
+  line-height: normal;
+  display: inline;
+}
+
+.ol-attribution button {
+  display: none;
+  line-height: normal;
+}

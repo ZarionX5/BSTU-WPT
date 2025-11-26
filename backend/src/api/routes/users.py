@@ -3,7 +3,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException, status
 
 from src.api.deps import CurrentUser, SessionDep
-from src.models.users import UserPublic, UserCreate
+from src.models.users import UserPublic, UserLogin, UserRegister
 from src.crud import users
 
 router = APIRouter(prefix="/users", tags=["users"])
@@ -17,7 +17,7 @@ def read_user_me(current_user: CurrentUser) -> Any:
 @router.post(
     "/", response_model=UserPublic
 )
-def create_user(*, session: SessionDep, user_in: UserCreate) -> Any:
+def create_user(*, session: SessionDep, user_in: UserRegister) -> Any:
     user = users.get_user_by_email(session=session, email=user_in.email)
     if user:
         raise HTTPException(
@@ -25,6 +25,6 @@ def create_user(*, session: SessionDep, user_in: UserCreate) -> Any:
             detail="The user with this email already exists in the system.",
         )
 
-    user = users.create_user(session=session, user_create=user_in)
+    user = users.create_user(session=session, user_register=user_in)
 
     return user

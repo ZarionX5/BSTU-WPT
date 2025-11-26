@@ -23,7 +23,11 @@ class UserCreate(Password, UserBase):
     pass
 
 
-class UserRegister(Password, Email, Name):
+class UserLogin(Password, Email):
+    pass
+
+
+class UserRegister(Name, UserLogin):
     pass
 
 

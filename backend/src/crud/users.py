@@ -2,13 +2,17 @@ from typing import Any, Optional
 
 from sqlmodel import Session, select
 
-from src.models import User, UserCreate, UserUpdate
+from src.models import User, UserRegister, UserUpdate
 from src.utils import get_password_hash, verify_password
 
 
-def create_user(*, session: Session, user_create: UserCreate) -> User:
+def create_user(*, session: Session, user_register: UserRegister) -> User:
     db_obj = User.model_validate(
-        user_create, update={"hashed_password": get_password_hash(user_create.password)}
+        user_register, update={
+            "description": "",
+            "is_active": True,
+            "is_superuser": False,
+            "hashed_password": get_password_hash(user_register.password)}
     )
     session.add(db_obj)
     session.commit()

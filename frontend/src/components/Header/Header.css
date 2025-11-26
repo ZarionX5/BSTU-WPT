@@ -44,13 +44,12 @@
   margin-left: 4px;
 }
 
-.header a {
+.header .user-opt {
   padding: 5px;
 }
 
-.header a,
-.header a * {
-  background-color: transparent;
+.header .user-opt,
+.header .user-opt * {
   display: flex;
   align-items: center;
   height: 100%;

@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import mainLogo from "/src/assets/logo.svg"
 import "./Header.css";
+import useAuth from '@/hooks/useAuth';
 
 function Header() {
+  const { user, logout } = useAuth();
+
   return (
     <>
       <header className="header">
@@ -49,16 +52,34 @@ function Header() {
         </nav>
 
         <div className="user-cnt">
-          <Link to="/login">
+          {user ?
+          <Link className='user-opt' to="/null">
+            {user.name}
+          </Link>
+          :
+          <Link className='user-opt' to="/login">
             <button className="user-btn">
               Вход
             </button>
           </Link>
-          <Link to="/register">
+          }
+
+          {user ?
+          <div className='user-opt'>
+            <button className="user-btn"
+            onClick={() => {
+              logout();
+            }}>
+              Выход
+            </button>
+          </div>
+          :
+          <Link className='user-opt' to="/register">
             <button className="user-btn">
               Регистрация
             </button>
           </Link>
+          }
         </div>
       </header>
     </>

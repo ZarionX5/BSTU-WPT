@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import '../features/trackerObject/TrackerObjectSlice'
-import { trackerObjectSlice } from '../features/trackerObject/TrackerObjectSlice'
+import { authApi } from './services/auth'
+// import '../features/trackerObject/trackerObjectSlice'
+// import { trackerObjectSlice } from '../features/trackerObject/trackerObjectSlice'
 
 
 export const store = configureStore({
   reducer: {
-    trackerObject: trackerObjectSlice.reducer
+    // trackerObject: trackerObjectSlice.reducer
+    [authApi.reducerPath]: authApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(authApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

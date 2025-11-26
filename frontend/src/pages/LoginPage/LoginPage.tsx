@@ -4,6 +4,7 @@ import Content from "../../components/Content/Content"
 
 
 function LoginPage() {
+
   return (
     <>
       <Content>

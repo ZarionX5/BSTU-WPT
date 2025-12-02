@@ -26,7 +26,6 @@ function LoginForm() {
   });
 
   const onSubmit: SubmitHandler<AccessToken> = async (data) => {
-    console.log(data)
     if (isSubmitting) return
 
     resetError()

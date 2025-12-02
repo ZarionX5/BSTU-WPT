@@ -4,13 +4,12 @@ import {
   type UserPublic,
   type UserRegister,
 } from '@/client'
-import { formDataBodySerializer } from '@/client/client'
 
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8000/api/v1',
+    baseUrl: import.meta.env.VITE_BACKEND_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token')
 

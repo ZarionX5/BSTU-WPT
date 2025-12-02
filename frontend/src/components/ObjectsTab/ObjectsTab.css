@@ -1,0 +1,47 @@
+.objects-tab {
+  display: grid;
+  grid-template: 100% / 500px auto;
+  height: 100%;
+}
+
+.objects-tab span {
+ align-self: center;
+}
+
+.objects-tab .line-item {
+  padding: .2em;
+}
+
+.objects-tab .other-control-bar {
+  display: flex;
+}
+
+.objects-tab .search {
+  width: 100%;
+}
+
+.objects-tab .title-object-bar {
+  background-color: var(--gray-700);
+  text-align: center;
+  display: grid;
+  grid-template: 25px / 8fr 1fr 1fr;
+}
+
+.objects-tab .list-object-item {
+  background-color: var(--gray-500);
+  text-align: center;
+  display: grid;
+  grid-template: 25px / 1fr 7fr 1fr 1fr;
+}
+
+.objects-tab .list-object-item .object-name {
+  text-align: left;
+}
+
+.object-control {
+  padding: 1em 3em;
+}
+
+.object-control div {
+  margin-bottom: 10px;
+}

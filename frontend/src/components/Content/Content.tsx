@@ -3,13 +3,11 @@ import "./Content.css";
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <div className="content">
-        <main className="main">
-          {children}
-        </main>
-      </div>
-    </>
+    <div className="content">
+      <main className="main">
+        {children}
+      </main>
+    </div>
   )
 }
 

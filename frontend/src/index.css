@@ -49,7 +49,7 @@
   --space-96: 24rem;
 
   color-scheme: light dark;
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -121,7 +121,7 @@ html {
 
 body {
   height: 100%;
-  
+
   color: var(--gray-300);
   background-color: var(--gray-700);
 
@@ -137,7 +137,8 @@ body {
 
 a,
 input,
-button {
+button,
+select {
   color: var(--gray-100);
 
   font-size: var(--font-size-base);
@@ -188,4 +189,9 @@ a:hover,
 a:active {
   color: var(--blue-400);
   text-decoration: underline;
+}
+
+select:active,
+select:focus {
+  outline: none;
 }

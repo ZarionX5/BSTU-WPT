@@ -123,21 +123,6 @@
   background-color: var(--gray-500);
 }
 
-.view-panel > * {
-  height: 100%;
-  width: 100%;
-}
-
-.view-panel .world-map {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("/src/assets/other/world-map.svg"), linear-gradient(to bottom, var(--blue-500), var(--blue-700));
-  background-position: center;
-  height: 100%;
-  width: 100%;
-}
-
-
 .world-map {
   display: flex;
   justify-content: center;

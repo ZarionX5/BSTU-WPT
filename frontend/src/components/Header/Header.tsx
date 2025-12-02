@@ -15,35 +15,35 @@ function Header() {
         </div>
         <nav>
           <div className="nav-btn-cnt">
-            <Link className="btn-dashboard" to="/content">
+            <Link className="btn-dashboard" to="/monitoring">
               <div>
               </div>
               <span className="nav-btn-name">Опробовать</span>
             </Link>
           </div>
           <div className="nav-btn-cnt">
-            <a className="btn-monitoring" href="./null.html">
+            <a className="btn-monitoring" href="/null">
               <div>
               </div>
               <span className="nav-btn-name">Форму</span>
             </a>
           </div>
           <div className="nav-btn-cnt">
-            <a className="btn-monitoring" href="./null.html">
+            <a className="btn-monitoring" href="/null">
               <div>
               </div>
               <span className="nav-btn-name">Техническая поддержка</span>
             </a>
           </div>
           <div className="nav-btn-cnt">
-            <a className="btn-monitoring" href="./null.html">
+            <a className="btn-monitoring" href="/null">
               <div>
               </div>
               <span className="nav-btn-name">Документация</span>
             </a>
           </div>
           <div className="nav-btn-cnt">
-            <a className="btn-monitoring" href="./null.html">
+            <a className="btn-monitoring" href="/null">
               <div>
               </div>
               <span className="nav-btn-name">О нас</span>

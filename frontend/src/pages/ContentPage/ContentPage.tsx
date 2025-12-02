@@ -1,7 +1,5 @@
-
-import Content from "../../components/Content/Content"
-import { Link } from 'react-router-dom';
-import "./ContentPage.css";
+import { useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
 
 import MainLogo from '/src/assets/logo.svg?react'
 import DashboardLogo from '/src/assets/other/dashboard.svg?react'
@@ -18,33 +16,68 @@ import DeleteLogo from '/src/assets/other/delete.svg?react'
 import PedalBikeLogo from '/src/assets/other/pedal-bike.svg?react'
 import RemoveLogo from '/src/assets/other/remove.svg?react'
 
+import Content from "../../components/Content/Content"
 import Map from '../../components/Map/Map'
+import { AuthProtectProvider } from "@/components/AuthContext/AuthContext";
+import useAuth from "@/hooks/useAuth";
 
+import "./ContentPage.css";
+import ObjectsTab from "@/components/ObjectsTab/ObjectsTab";
+import MonitoringTab from "@/components/MonitoringTab/MonitoringTab";
 
-function ContentPage() {
+interface ContentPageProps {
+  tabOpened: 'dashboard' | 'monitoring' | 'objects'
+}
+
+function ContentPage({tabOpened}: ContentPageProps) {
+  const { user } = useAuth();
+
+  const content = () => {
+    if (tabOpened === "dashboard") {
+      return null
+    } else if (tabOpened === "monitoring") {
+      return (
+        <>
+          <MonitoringTab />
+        </>
+      )
+    } else if (tabOpened === "objects") {
+      return (
+        <ObjectsTab/>
+      )
+    }
+  }
 
   return (
-    <>
+    <AuthProtectProvider>
       <header className="header-content">
         <div className="header-content-logo">
           <MainLogo/>
           <span>Tracker</span>
         </div>
         <nav>
-          <div className="nav-btn-cnt">
-            <Link className="btn-dashboard" to="/null">
+          <div className={"nav-btn-cnt " + (tabOpened === "dashboard" ? "nav-btn-selected" : "")}>
+            <Link className="btn-dashboard" to="/dashboard">
               <div>
                 <DashboardLogo/>
               </div>
               <span className="nav-btn-name">Дашборд</span>
             </Link>
           </div>
-          <div className="nav-btn-cnt nav-btn-selected">
-            <Link className="btn-monitoring" to="/null">
+          <div className={"nav-btn-cnt " + (tabOpened === "monitoring" ? "nav-btn-selected" : "")}>
+            <Link className="btn-monitoring" to="/monitoring">
               <div>
                 <MonitoringLogo/>
               </div>
               <span className="nav-btn-name">Мониторинг</span>
+            </Link>
+          </div>
+          <div className={"nav-btn-cnt " + (tabOpened === "objects" ? "nav-btn-selected" : "")}>
+            <Link className="btn-objects" to="/objects">
+              <div>
+                <AddLogo/>
+              </div>
+              <span className="nav-btn-name">Объекты</span>
             </Link>
           </div>
         </nav>
@@ -55,109 +88,15 @@ function ContentPage() {
                 <AccountLogo/>
             </div>
             <span>
-              Nikita Loek
+              {user ? user.name : '...'}
             </span>
           </Link>
         </div>
       </header>
       <Content>
-        <div className="container">
-          <div className="control-panel">
-            <input className="search" type="text"/>
+        {content()}
 
-            <div className="control-panel-title">
-              <input type="checkbox" name="select-all"/>
-              <button className="center">
-                  <AddLogo/>
-              </button>
-              <button className="center">
-                  <RefreshLogo/>
-              </button>
-              <button className="center">
-                  <VdotsLogo/>
-              </button>
-              <button className="center">
-                  <SettingsLogo/>
-              </button>
-              <div className="center">
-                  <LocationLogo/>
-              </div>
-              <div className="center">
-                  <SignalLogo/>
-              </div>
-              <div className="center">
-              </div>
-            </div>
 
-            <div className="control-panel-list">
-              <input type="checkbox" name="select-all"/>
-              <div className="center">
-                  <PersonLogo/>
-              </div>
-              <span>Человек 1</span>
-              <div className="center">
-                <span className="state good">on</span>
-              </div>
-              <div className="center">
-                70%
-              </div>
-              <div className="center">
-                  <DeleteLogo/>
-              </div>
-            </div>
-
-            <div className="control-panel-list">
-              <input type="checkbox" name="select-all"/>
-              <div className="center">
-                  <PersonLogo/>
-              </div>
-              <span>Человек 2</span>
-              <div className="center">
-                <span className="state bad">off</span>
-              </div>
-              <div className="center">
-                0%
-              </div>
-              <div className="center">
-                  <DeleteLogo/>
-              </div>
-            </div>
-
-            <div className="control-panel-list">
-              <input type="checkbox" name="select-all"/>
-              <div className="center">
-                  <PedalBikeLogo/>
-              </div>
-              <span>Велосипед</span>
-              <div className="center">
-                <span className="state good">on</span>
-              </div>
-              <div className="center">
-                95%
-              </div>
-              <div className="center">
-                  <DeleteLogo/>
-              </div>
-            </div>
-          </div>
-          <div className="view-panel">
-            <Map>
-
-            </Map>
-            {/* <div className="world-map">
-              <div className="sizing">
-                <div className="btn-cnt">
-                  <button>
-                  <AddLogo/>
-                  </button>
-                  <button>
-                  <RemoveLogo/>
-                  </button>
-                </div>
-              </div>
-            </div> */}
-          </div>
-        </div>
 
       </Content>
       <footer className="footer">
@@ -182,7 +121,7 @@ function ContentPage() {
           </p>
         </div>
       </footer>
-    </>
+    </AuthProtectProvider>
   )
 }
 

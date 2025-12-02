@@ -15,8 +15,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/content" element={<ContentPage />} />
         <Route path="/null" element={<Error404Page />} />
+        <Route path="/dashboard" element={<ContentPage tabOpened='dashboard' />} />
+        <Route path="/monitoring" element={<ContentPage tabOpened='monitoring' />} />
+        <Route path="/objects" element={<ContentPage tabOpened='objects' />} />
       </Routes>
     </>
   )
